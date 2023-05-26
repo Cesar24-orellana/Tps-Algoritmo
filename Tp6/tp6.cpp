@@ -13,11 +13,13 @@ int main(){
     }else{
         printf("No es fila vacia\n");
     }
+    mostrar(F);
     getchar();
     printf("2. Agregar el dato (1) a la fila\n");
     F = enfila(F, 1);
     printf("3. En el frente se encuentra el dato: %d\n", frente(F));
     printf("Y en el final se encuentra el dato: %d", final(F));
+    mostrar(F);
     getchar();
     printf("4. Cargo los datos (2, 3, 4, 4, 5, 1, 7)\n");
     F = enfila(F, 2);
@@ -28,17 +30,19 @@ int main(){
     F = enfila(F, 1);
     F = enfila(F, 7);
     printf("5. En el frente se encuentra el dato: %d\n", frente(F));
-    printf("Y en el final se encuentra el dato: %d", final(F));
+    printf("Y en el final se encuentra el dato: %d\n", final(F));
     printf("6. Longitud de la fila: %d\n", F.longitud);
-    Fila G = FilaVacia();
-    F = extraer_N_esimo(F, 3, G);
+    mostrar(F);
+    F = extraer_N_esimo(F, 2, FilaVacia());
     if (pertenece(F, 4))
     {
         printf("Si pertenece\n");
     }else{
         printf("No pertenece\n");
     }
+    mostrar(F);
     F = singular(F);
+    mostrar(F);
     printf("Longitud de F: %d\n", F.longitud);
     getchar();
     printf("Liberar Memoria\n");

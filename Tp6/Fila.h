@@ -65,11 +65,10 @@ Fila defila(Fila F){
 Fila Concatenar(Fila F, Fila G){
     if(esFilaVacia(F)) return G;
     if(esFilaVacia(G)) return F;
-    while (!esFilaVacia(G))
-    {
-        F = enfila(F, frente(G));
-        G = defila(G);
-    }
+    F.final->siguiente = G.frente;
+    F.final = G.final;
+    F.longitud += G.longitud;
+    G = FilaVacia();
     return F;
 }
 
@@ -81,7 +80,8 @@ Fila extraer_N_esimo(Fila F, int n, Fila G){
         return extraer_N_esimo(defila(F), n-1, G);
     }else
     {
-        Concatenar(G, defila(F));
+        G = Concatenar(G, defila(F));
+        F = FilaVacia();
         return G;
     }
 }
@@ -113,6 +113,25 @@ bool pertenece(Fila F, Item dato){
 
 Fila singular(Fila F){
     if(esFilaVacia(F)) return FilaVacia();
-    if(pertenece(F,frente(F))) return singular(defila(F));
-    return enfila(singular(defila(F)), frente(F));
+    Fila G = FilaVacia();
+    Item x;
+    while(!esFilaVacia(F)){
+        x = frente(F);
+        if(!pertenece(G, x)){
+            G = enfila(G,x);
+        }
+        F = defila(F);
+    }
+    return G;
+}
+
+void mostrar(Fila F){
+    Nodo *aux = F.frente;
+    printf("[ ");
+    while (aux != NULL)
+    {
+        printf("%d ",aux->dato);
+        aux = aux->siguiente;
+    }
+    printf("]\n");
 }
