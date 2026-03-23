@@ -18,9 +18,10 @@ typedef struct{
 typedef struct nodo *NLista;
 
 Lista crearLista(){
-    Lista nodoLista;
-    nodoLista.L = NULL;
-    return nodoLista;
+    Lista newLista;
+    newLista.L = NULL;
+    newLista.cantidad = 0;
+    return newLista;
 }
 
 void mostrar(Lista H){
@@ -47,13 +48,65 @@ int longitud(Lista H){
 }
 
 item primerElemento(Lista H){
+    if(esListaVacia(H)) return indefinido;
     return H.L->dato;
 }
 
-Lista insertar(Lista H, char dato){
+Lista insertar(Lista H, item dato){
     nodo *newNodo = new nodo;
     newNodo->dato = dato;
     newNodo->Siguiente = H.L;
     H.L = newNodo;
+    H.cantidad = H.cantidad + 1;
     return H;
+}
+
+Lista borrar(Lista H){
+    if(esListaVacia(H)) return H;
+    Lista ListAux = H;
+    struct nodo *N_Aux = ListAux.L; 
+    ListAux.L = N_Aux->Siguiente;
+    ListAux.cantidad--;
+    delete(N_Aux);
+    return ListAux;
+}
+
+bool pertenece(Lista H, item dato){
+    nodo *Aux = H.L;
+    if (Aux == NULL) return false;
+    
+    while(Aux != NULL && Aux->dato == dato){
+        Aux = Aux->Siguiente;
+    }
+    return Aux != NULL;
+}
+
+Lista insertarFinal(Lista H, item dato){
+    Lista Cabecera = H;
+    nodo *nuevoNodo = new nodo;
+    nuevoNodo->dato = dato;
+    nuevoNodo->Siguiente = NULL;
+    if (esListaVacia(Cabecera))
+    {
+        Cabecera.L = nuevoNodo;
+    } else {
+        nodo *Aux = Cabecera.L;
+        while (Aux != NULL)
+        {
+            Aux = Aux->Siguiente;
+        }
+        Aux->Siguiente = nuevoNodo;
+    }
+    Cabecera.cantidad++;
+    return Cabecera;
+}
+
+char posicionK(Lista *H, int posicion){
+    int contador = 0;
+    while (!esListaVacia(*H) && contador < posicion)
+    {
+        *H = borrar(*H);
+        contador++;
+    }
+    return primerElemento(*H);
 }
