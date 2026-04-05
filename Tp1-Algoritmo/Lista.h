@@ -66,7 +66,7 @@ Lista borrar(Lista H){
     Lista ListAux = H;
     struct nodo *N_Aux = ListAux.L; 
     ListAux.L = N_Aux->Siguiente;
-    ListAux.cantidad--;
+    ListAux.cantidad == ListAux.cantidad - 1;
     delete(N_Aux);
     return ListAux;
 }
@@ -75,10 +75,10 @@ bool pertenece(Lista H, item dato){
     nodo *Aux = H.L;
     if (Aux == NULL) return false;
     
-    while(Aux != NULL && Aux->dato == dato){
+    while(Aux->Siguiente != NULL && Aux->dato != dato){
         Aux = Aux->Siguiente;
     }
-    return Aux != NULL;
+    return Aux->dato == dato;
 }
 
 Lista insertarFinal(Lista H, item dato){
@@ -86,12 +86,12 @@ Lista insertarFinal(Lista H, item dato){
     nodo *nuevoNodo = new nodo;
     nuevoNodo->dato = dato;
     nuevoNodo->Siguiente = NULL;
-    if (esListaVacia(Cabecera))
+    if (Cabecera.L == NULL)
     {
         Cabecera.L = nuevoNodo;
     } else {
-        nodo *Aux = Cabecera.L;
-        while (Aux != NULL)
+        struct nodo *Aux = Cabecera.L;
+        while (Aux->Siguiente != NULL)
         {
             Aux = Aux->Siguiente;
         }
