@@ -12,7 +12,7 @@
 #include "Lista.h"
 
 int main(){
-
+    
 // -- PROGRAMA DE PRUEBA DE LISTA CON FUNCIONES QUE RETORNAN LA LISTA MODIFICADA
 
     printf("\nINICIO DEL PROGRAMA DE PRUEBA DE LISTA CON FUNCIONES QUE RETORNAN LA LISTA MODIFICADA\n");
@@ -122,7 +122,7 @@ int main(){
     printf("\nFIN DEL PROGRAMA DE PRUEBA DE LISTA CON FUNCIONES QUE MODIFICAN LA LISTA POR PARAMETRO\n");
 
 
-
+    getchar();
 // -----------------------------------------------------------------------------------------------------------------------
     return 0;
 }
