@@ -3,27 +3,69 @@
 #include <string.h>
 
 #include "Lista.h"
-#define LONGITUD(x) (sizeof(x)/sizeof((x)[0])) // longitud de un arreglo
+#define LONGITUD(x) (sizeof(x) / sizeof((x)[0])) // longitud de un arreglo
 
-int main(){
+int main()
+{
     escribirInversa(12345);
     int mayorI = mayorIterativo(183249);
     printf("\n%d", mayorI);
     int mayorR = mayorRecursivo(51457964, 0);
     printf("\n%d", mayorR);
     char palabra[] = "ana";
-    if(palabraPalindrome(palabra, 0, strlen(palabra))){
+    if (palabraPalindrome(palabra, 0, strlen(palabra)))
+    {
         printf("\nEs palindrome");
-    } else{
+    }
+    else
+    {
         printf("\nNo es palindrome");
     }
 
-    int V[7] = {1,2,2,3,4,4,5};
-    if(orden(V, 0, LONGITUD(V))){
+    int V[7] = {1, 2, 2, 3, 4, 4, 5};
+    if (orden(V, 0, LONGITUD(V)))
+    {
         printf("\nEsta Ordenado");
-    } else{
+    }
+    else
+    {
         printf("\nNo esta ordenado");
     }
+
+    Lista H = crearLista();
+    for (int i = 0; i < 5; i++)
+    {
+        H = insertar(H, i + 1);
+    }
+    if (perteneceR(H, 3))
+    {
+        printf("\nSi pertenece");
+    }
+    else
+    {
+        printf("\nNo pertenece");
+    }
+    printf("\n%d", posicionK(H, 3, 0));
+
+    Lista H2 = crearLista();
+    for (int i = 0; i < 7; i++)
+    {
+        H2 = insertar(H, i + 3);
+    }
+    if (esteContenido(H,H2))
+    {
+        printf("\nEsta contenido");
+    } else{
+        printf("\nNo esta contenido");
+    }
+
+
+    if (buscarPar(V, 0, LONGITUD(V), 2, 3))
+    {
+        printf("\nEs continuo");
+    } else{
+        printf("\nNo es continuo");
+    }
+    
     return 0;
 }
-
