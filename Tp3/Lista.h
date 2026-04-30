@@ -31,19 +31,13 @@ item primerElemento(Lista H)
 }
 
 Lista borrar(Lista H) {
-    // 1. Verificación de seguridad
-    if (H.L == nullptr || H.cantidad == 0) { 
-        return H; 
+    Lista aux = H;
+    if(aux.L != NULL){
+        struct nodo *Naux = aux.L;
+        aux.L = Naux->Siguiente;
+        delete(Naux);
     }
-
-    // 2. Proceso de borrado
-    struct nodo *N_Aux = H.L; // Guardamos el nodo a borrar
-    H.L = H.L->Siguiente;     // El inicio ahora es el segundo nodo
-    H.cantidad--;             // Restamos al contador
-    
-    delete N_Aux;             // Liberamos memoria
-    
-    return H;                 // Único punto de salida garantizado
+    return aux;
 }
 
 // Lista borrar(Lista H){                  // -- O(1)
