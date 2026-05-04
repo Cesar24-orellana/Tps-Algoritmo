@@ -45,14 +45,20 @@ int main()
     {
         printf("\nNo pertenece");
     }
+    Lista H2 = crearLista();
+    for (int i = 0; i < 5; i++)
+    {
+        H2 = insertar(H2, i + 1);
+    }
     printf("\n%d", posicionK(H, 3, 0));
 
-    Lista H2 = crearLista();
+    Lista H3 = crearLista();
     for (int i = 0; i < 7; i++)
     {
-        H2 = insertar(H, i + 3);
+        H3 = insertar(H3, i + 3);
+        H = insertar(H, i + 1);
     }
-    if (esteContenido(H,H2))
+    if (esteContenido(H,H3))
     {
         printf("\nEsta contenido");
     } else{

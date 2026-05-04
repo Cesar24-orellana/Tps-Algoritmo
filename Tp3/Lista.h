@@ -35,6 +35,7 @@ Lista borrar(Lista H) {
     if(aux.L != NULL){
         struct nodo *Naux = aux.L;
         aux.L = Naux->Siguiente;
+        aux.cantidad--;
         delete(Naux);
     }
     return aux;
@@ -167,14 +168,16 @@ bool perteneceR(Lista H, item dato)
         }
         else
         {
-            return perteneceR(borrar(H), dato);
+            Lista aux = H;
+            aux.L = aux.L->Siguiente;
+            return perteneceR(aux, dato);
         }
     }
 }
 
 item posicionK(Lista H, int posicion, int cantidad)
 {
-    if (!esListaVacia(H) && cantidad == posicion)
+    if (esListaVacia(H) || cantidad == posicion)
     {
         return (primerElemento(H));
     }
@@ -194,7 +197,9 @@ bool esteContenido(Lista L1, Lista L2)
     {
         if (perteneceR(L2, L1.L->dato))
         {
-            return esteContenido(borrar(L1), L2);
+            Lista L = L1;
+            L.L = L.L->Siguiente;
+            return esteContenido(L, L2);
         } else{
             return false;
         }
