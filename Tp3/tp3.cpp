@@ -13,7 +13,7 @@ int main()
     int mayorR = mayorRecursivo(51457964, 0);
     printf("\n%d", mayorR);
     char palabra[] = "ana";
-    if (palabraPalindrome(palabra, 0, strlen(palabra)))
+    if (palabraPalindrome(palabra, 0, strlen(palabra) - 1))
     {
         printf("\nEs palindrome");
     }
@@ -22,7 +22,7 @@ int main()
         printf("\nNo es palindrome");
     }
 
-    int V[7] = {1, 2, 2, 3, 4, 4, 5};
+    int V[7] = {1, 2, 3, 3, 4, 4, 5};
     if (orden(V, 0, LONGITUD(V)))
     {
         printf("\nEsta Ordenado");
@@ -31,6 +31,15 @@ int main()
     {
         printf("\nNo esta ordenado");
     }
+
+    
+    if (buscarPar(V, 0, LONGITUD(V), 2, 3))
+    {
+        printf("\nEs continuo");
+    } else{
+        printf("\nNo es continuo");
+    }
+
 
     Lista H = crearLista();
     for (int i = 0; i < 5; i++)
@@ -58,7 +67,7 @@ int main()
         H3 = insertar(H3, i + 3);
         H = insertar(H, i + 1);
     }
-    if (esteContenido(H,H3))
+    if (esteContenido(H3,H))
     {
         printf("\nEsta contenido");
     } else{
@@ -66,12 +75,6 @@ int main()
     }
 
 
-    if (buscarPar(V, 0, LONGITUD(V), 2, 3))
-    {
-        printf("\nEs continuo");
-    } else{
-        printf("\nNo es continuo");
-    }
     
     return 0;
 }
