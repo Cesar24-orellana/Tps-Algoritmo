@@ -67,3 +67,25 @@ void QuitarUltimo(Baul *B){
         delete(aux);
     }
 }
+
+int Disponible(Baul B){
+    return B.capacidadMax - B.ocupado;
+}
+
+void Vaciar(Baul *B){
+    if (!EstaVacio(*B))
+    {
+        Nodo *aux = B->objetos;
+        Nodo *borrar;
+        B->primero = NULL;
+        B->ocupado = 0;
+        while(aux != NULL){
+            borrar = aux;
+            aux = aux->siguiente;
+            delete(borrar);
+        }
+    }
+    
+}
+
+bool Contiene()
