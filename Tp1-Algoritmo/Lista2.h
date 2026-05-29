@@ -41,6 +41,7 @@ int longitud(Lista H){
 }
 
 item primerElemento(Lista H){
+    if(esListaVacia(H)) return indefinido;
     return H.L->dato;
 }
 
@@ -70,7 +71,7 @@ bool pertenece(Lista H, item dato){
         {
             return true;
         }
-        
+        aux = aux->siguiente;
     }
     return false;
 }
@@ -83,7 +84,7 @@ void insertarFinal(Lista *H, item dato){
     {
         Nodo *aux1 = H->L;
         Nodo *aux2;
-        while (aux1 = NULL)
+        while (aux1 != NULL)
         {
             aux2 = aux1;
             aux1 = aux1->siguiente;
@@ -95,7 +96,7 @@ void insertarFinal(Lista *H, item dato){
 
 item posicionK(Lista *H, int num){
     int contador = 1;
-    while (!esListaVacia(*H) && contador < num)
+    while (!esListaVacia(*H) || contador < num)
     {
         borrar(H);
         contador++;
