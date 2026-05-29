@@ -88,4 +88,16 @@ void Vaciar(Baul *B){
     
 }
 
-bool Contiene()
+bool Contiene(Baul B, item dato){
+    if(EstaVacio(B)) return false;
+    Nodo *aux = B.objetos;
+    while (aux != NULL && aux->dato != true)
+    {
+        aux = aux->siguiente;
+    }
+    return aux != NULL;
+}
+
+int Ocupado(Baul B){
+    return B.ocupado;
+}
