@@ -101,3 +101,29 @@ bool Contiene(Baul B, item dato){
 int Ocupado(Baul B){
     return B.ocupado;
 }
+
+int moverObjetos(Baul *salida, Baul *llegada){
+    if(EstaVacio(*salida)) return 0;
+    Nodo *auxSalida = salida->objetos;
+    Nodo *auxLlegada = llegada->objetos;
+    Nodo *mover = auxSalida;
+    int cont = 0;                   // Contador
+
+    if(EstaVacio(*llegada)){
+        auxSalida = auxSalida->siguiente;
+        mover->siguiente = NULL;
+        auxLlegada = mover;
+        llegada->primero = auxLlegada;
+        cont++;
+    }
+
+    while (auxSalida != NULL)
+    {
+        cont++;
+        mover = auxSalida;
+        auxSalida = auxSalida->siguiente;
+        mover->siguiente = auxLlegada;
+        auxLlegada = mover;
+    }
+    
+}
