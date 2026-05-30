@@ -127,6 +127,7 @@ int moverObjetos(Baul *salida, Baul *llegada){
     }
 
     llegada->objetos = auxLlegada;
+    llegada->ocupado+=cont;
     
     salida->objetos = NULL;
     salida->primero = NULL;
