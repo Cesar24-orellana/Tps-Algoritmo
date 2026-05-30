@@ -125,5 +125,12 @@ int moverObjetos(Baul *salida, Baul *llegada){
         mover->siguiente = auxLlegada;
         auxLlegada = mover;
     }
+
+    llegada->objetos = auxLlegada;
     
+    salida->objetos = NULL;
+    salida->primero = NULL;
+    salida->ocupado = 0;
+    
+    return cont;
 }
