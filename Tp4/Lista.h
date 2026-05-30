@@ -72,8 +72,6 @@ void QuitarUltimo(Baul *B){
     }
 }
 
-
-
 void Vaciar(Baul *B){
     if (!EstaVacio(*B))
     {
@@ -93,7 +91,7 @@ void Vaciar(Baul *B){
 bool Contiene(Baul B, item dato){
     if(EstaVacio(B)) return false;
     Nodo *aux = B.objetos;
-    while (aux != NULL && aux->dato != true)
+    while (aux != NULL && aux->dato != dato)
     {
         aux = aux->siguiente;
     }
