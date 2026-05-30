@@ -36,8 +36,12 @@ void Guardar(Baul *B, item dato){
     if(B->primero == NULL) B->primero = nuevo;
 }
 
+int Disponible(Baul B){
+    return (B.capacidadMax - B.ocupado);
+}
+
 void Agregar(Baul *B,item dato){
-    if(Disponible(*B)>0) Guardar(B, dato);
+    if(Disponible(*B)>0)  Guardar(B, dato);
 }
 
 int Capacidad(Baul B){
@@ -68,9 +72,7 @@ void QuitarUltimo(Baul *B){
     }
 }
 
-int Disponible(Baul B){
-    return B.capacidadMax - B.ocupado;
-}
+
 
 void Vaciar(Baul *B){
     if (!EstaVacio(*B))
