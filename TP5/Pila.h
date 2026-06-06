@@ -78,3 +78,13 @@ void popF(Pila *P){
     }
     
 }
+
+bool pertenece(Pila P, Item dato){
+    if(esPilaVacia(P)) return false;
+    Nodo *aux = P.Tope;
+    while (aux != NULL && aux->dato != dato)
+    {
+        aux = aux->siguiente;
+    }
+    return aux != NULL;
+}
