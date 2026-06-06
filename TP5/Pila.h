@@ -88,3 +88,20 @@ bool pertenece(Pila P, Item dato){
     }
     return aux != NULL;
 }
+
+void Reemp(Pila *P, Item modificar, Item dato){
+    if (!esPilaVacia(*P))
+    {
+        Nodo *aux = P->Tope;
+        while (aux != NULL)
+        {
+            if (aux->dato == modificar)
+            {
+                aux->dato = dato;
+            }
+            aux = aux->siguiente;
+        }
+        
+    }
+    
+}
