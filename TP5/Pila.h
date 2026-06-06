@@ -36,6 +36,10 @@ Pila push(Pila P, Item dato){
 
 // - - - - - - - - - - - - 
 
+bool esPilaVacia(Pila P){
+    return P.Tope == NULL;
+}
+
 Pila pop(Pila P){
     if(!esPilaVacia(P)){
         Nodo *aux = P.Tope;
@@ -51,9 +55,6 @@ Item top(Pila P){
     return P.Tope->dato;
 }
 
-bool esPilaVacia(Pila P){
-    return P.Tope == NULL;
-}
 
 Item Fondo(Pila P){
     if(esPilaVacia(P)) return Indefinido;
