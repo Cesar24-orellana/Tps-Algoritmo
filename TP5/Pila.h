@@ -25,23 +25,25 @@ Pila pilaVacia(){
     return nuevaP;
 }
 
-void push(Pila *P, Item dato){
+Pila push(Pila P, Item dato){
     Nodo *nuevo = new Nodo;
     nuevo->dato = dato;
-    nuevo->siguiente = P->Tope;
-    P->Tope = nuevo;
-    P->cantidad++;
+    nuevo->siguiente = P.Tope;
+    P.Tope = nuevo;
+    P.cantidad++;
+    return P;
 }
 
 // - - - - - - - - - - - - 
 
-void pop(Pila *P){
-    if(!esPilaVacia(*P)){
-        Nodo *aux = P->Tope;
-        P->Tope = aux->siguiente;
-        P->cantidad--;
+Pila pop(Pila P){
+    if(!esPilaVacia(P)){
+        Nodo *aux = P.Tope;
+        P.Tope = aux->siguiente;
+        P.cantidad--;
         delete(aux);
     }
+    return P;
 }
 
 Item top(Pila P){
@@ -102,6 +104,18 @@ void Reemp(Pila *P, Item modificar, Item dato){
             aux = aux->siguiente;
         }
         
+    }
+    
+}
+
+Pila eliminarX(Pila P, Item dato){
+    if(esPilaVacia(P)) return P;
+
+    if (top(P) == dato)
+    {
+        return eliminarX(pop(P), dato);
+    } else{
+        return push(eliminarX(pop(P), dato), top(P));
     }
     
 }
