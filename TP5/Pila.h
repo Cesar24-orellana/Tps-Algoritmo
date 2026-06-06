@@ -62,3 +62,19 @@ Item Fondo(Pila P){
     }
     return aux->dato;
 }
+
+void popF(Pila *P){
+    if (!esPilaVacia(*P))
+    {
+        Nodo *aux;
+        Nodo *eliminar= P->Tope;
+        while (eliminar->siguiente != NULL)
+        {
+            aux->siguiente;
+            eliminar = eliminar->siguiente;
+        }
+        aux->siguiente = NULL;
+        delete(eliminar);
+    }
+    
+}
