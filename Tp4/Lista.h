@@ -104,34 +104,14 @@ int Ocupado(Baul B){
 
 int moverObjetos(Baul *salida, Baul *llegada){
     if(EstaVacio(*salida)) return 0;
-    Nodo *auxSalida = salida->objetos;
-    Nodo *auxLlegada = llegada->objetos;
-    Nodo *mover = auxSalida;
     int cont = 0;                   // Contador
-
-    if(EstaVacio(*llegada)){
-        auxSalida = auxSalida->siguiente;
-        mover->siguiente = NULL;
-        auxLlegada = mover;
-        llegada->primero = auxLlegada;
-        cont++;
-    }
-
-    while (auxSalida != NULL)
-    {
-        cont++;
-        mover = auxSalida;
-        auxSalida = auxSalida->siguiente;
-        mover->siguiente = auxLlegada;
-        auxLlegada = mover;
-    }
-
-    llegada->objetos = auxLlegada;
-    llegada->ocupado+=cont;
     
-    salida->objetos = NULL;
-    salida->primero = NULL;
-    salida->ocupado = 0;
+    while (!EstaVacio(*salida))
+    {
+        Agregar(llegada, Ultimo(*salida));
+        QuitarUltimo(salida);
+        cont++;
+    }
     
     return cont;
 }
