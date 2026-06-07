@@ -7,7 +7,7 @@ int main(){
     printf("- - - - - - Inicio del programa - - - - - - - \n");
     printf("1. Inicializo una pila\n");
     Pila P = pilaVacia();
-    printf("2. La pila esta vacia?");
+    printf("2. La pila esta vacia?\n");
     if (esPilaVacia(P))
     {
         printf("La pila esta vacia\n");
@@ -57,18 +57,21 @@ int main(){
     }else{
         printf("No pertenece\n");
     }
-    // printf("12. Modificar el/los datos (e) por el dato (z)\n");
-    // Reemp(&P,'e','z');
-    // printf("13. El dato (b) pertenece a la pila?\n");
-    // if (pertenece(P, 'b'))
-    // {
-    //     printf("Si pertenece\n");
-    // }else{
-    //     printf("No pertenece\n");
-    // }
-    // printf("14. Eliminar el dato (b) de la pila\n");
-    // P = eliminarX(P, 'b');
-    // printf("El dato del fondo de la pila es: %c", Fondo(P));
+    printf("12. Modificar el/los datos (e) por el dato (z)\n");
+    Reemp(&P,'e','z');
+    printf("13. El dato (b) pertenece a la pila?\n");
+    if (pertenece(P, 'b'))
+    {
+        printf("Si pertenece\n");
+    }else{
+        printf("No pertenece\n");
+    }
+    printf("14. Eliminar el dato (b) de la pila\n");
+    P = eliminarX(P, 'b');
+    printf("El dato del fondo de la pila es: %c", Fondo(P));
+    printf("15. Eliminar el dato del fondo\n");
+    P = popF(P);
+    printf("El dato del fondo de la pila es: %c\n", Fondo(P));
     getchar();
     printf("- - - - Liberar la memorio - - - -\n");
     while (!esPilaVacia(P))

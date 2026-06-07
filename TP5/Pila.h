@@ -72,20 +72,6 @@ Pila popF(Pila P){
     }else {
         return push(popF(pop(P)), top(P));
     }
-    // if (!esPilaVacia(*P))
-    // {
-    //     P->cantidad--;
-    //     Nodo *aux;
-    //     Nodo *eliminar= P->Tope;
-    //     while (eliminar->siguiente != NULL)
-    //     {
-    //         aux->siguiente;
-    //         eliminar = eliminar->siguiente;
-    //     }
-    //     aux->siguiente = NULL;
-    //     delete(eliminar);
-    // }
-    
 }
 
 bool pertenece(Pila P, Item dato){
