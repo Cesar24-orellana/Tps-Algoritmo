@@ -55,7 +55,6 @@ Item top(Pila P){
     return P.Tope->dato;
 }
 
-
 Item Fondo(Pila P){
     if(esPilaVacia(P)) return Indefinido;
     Nodo *aux = P.Tope;
@@ -66,19 +65,26 @@ Item Fondo(Pila P){
     return aux->dato;
 }
 
-void popF(Pila *P){
-    if (!esPilaVacia(*P))
-    {
-        Nodo *aux;
-        Nodo *eliminar= P->Tope;
-        while (eliminar->siguiente != NULL)
-        {
-            aux->siguiente;
-            eliminar = eliminar->siguiente;
-        }
-        aux->siguiente = NULL;
-        delete(eliminar);
+Pila popF(Pila P){
+    if(esPilaVacia(P)) return pilaVacia();
+    if(P.Tope->siguiente == NULL){
+        return pop(P);
+    }else {
+        return push(popF(pop(P)), top(P));
     }
+    // if (!esPilaVacia(*P))
+    // {
+    //     P->cantidad--;
+    //     Nodo *aux;
+    //     Nodo *eliminar= P->Tope;
+    //     while (eliminar->siguiente != NULL)
+    //     {
+    //         aux->siguiente;
+    //         eliminar = eliminar->siguiente;
+    //     }
+    //     aux->siguiente = NULL;
+    //     delete(eliminar);
+    // }
     
 }
 
