@@ -59,3 +59,15 @@ Fila defila(Fila F){
     delete(eliminar);
     return F;
 }
+
+Fila Concatenar(Fila F, Fila G){
+    if(esFilaVacia(F)) return G;
+    if(esFilaVacia(G)) return F;
+    while (!esFilaVacia(F))
+    {
+        enfila(&G, frente(F));
+        F = defila(F);
+    }
+    return G;
+}
+
