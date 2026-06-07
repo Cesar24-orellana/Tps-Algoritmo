@@ -31,18 +31,19 @@ bool esFilaVacia(Fila F){
     return (F.final == NULL && F.frente == NULL);
 }
 
-void enfila(Fila *F, Item dato){
+Fila enfila(Fila F, Item dato){
     Nodo *nuevo = new Nodo;
     nuevo->dato = dato;
     nuevo->siguiente = NULL;
-    F->cantidad++;
-    if(esFilaVacia(*F)){
-        F->final = nuevo;
-        F->frente = nuevo;
+    F.cantidad++;
+    if(esFilaVacia(F)){
+        F.final = nuevo;
+        F.frente = nuevo;
     } else
     {
-        F->final->siguiente = nuevo;
+        F.final->siguiente = nuevo;
     }
+    return F;
 }
 
 Item frente(Fila F){
@@ -65,7 +66,7 @@ Fila Concatenar(Fila F, Fila G){
     if(esFilaVacia(G)) return F;
     while (!esFilaVacia(G))
     {
-        enfila(&F, frente(G));
+        F = enfila(F, frente(G));
         G = defila(G);
     }
     return F;
@@ -75,7 +76,7 @@ Fila extraer_N_esimo(Fila F, int n, Fila G){
     if(esFilaVacia(F) || n > F.cantidad) return F;
     if (n != 0)
     {
-        enfila(&G, frente(F));
+        G = enfila(G, frente(F));
         return extraer_N_esimo(defila(F), n-1, G);
     }else
     {
@@ -109,3 +110,8 @@ bool pertenece(Fila F, Item dato){
     return aux != NULL;
 }
 
+Fila singular(Fila F){
+    if(esFilaVacia(F)) return FilaVacia();
+    if(pertenece(F,frente(F))) return singular(defila(F));
+    return enfila(singular(defila(F)), frente(F));
+}
