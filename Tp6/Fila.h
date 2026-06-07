@@ -63,11 +63,23 @@ Fila defila(Fila F){
 Fila Concatenar(Fila F, Fila G){
     if(esFilaVacia(F)) return G;
     if(esFilaVacia(G)) return F;
-    while (!esFilaVacia(F))
+    while (!esFilaVacia(G))
     {
-        enfila(&G, frente(F));
-        F = defila(F);
+        enfila(&F, frente(G));
+        G = defila(G);
     }
-    return G;
+    return F;
 }
 
+Fila extraer_N_esimo(Fila F, int n, Fila G){
+    if(esFilaVacia(F) || n > F.cantidad) return F;
+    if (n != 0)
+    {
+        enfila(&G, frente(F));
+        return extraer_N_esimo(defila(F), n-1, G);
+    }else
+    {
+        Concatenar(G, defila(F));
+        return G;
+    }
+}
