@@ -83,3 +83,20 @@ Fila extraer_N_esimo(Fila F, int n, Fila G){
         return G;
     }
 }
+
+Item final(Fila F){
+    return F.final->dato;
+}
+
+Fila defilarN(Fila F, int n){
+    if(esFilaVacia(F)) return FilaVacia();
+    if (n = 0)
+    {
+        return F;
+    }else
+    {
+        defilarN(defila(F),n-1);
+    }
+}
+
+bool pertenece(Fila F, Item dato){}
