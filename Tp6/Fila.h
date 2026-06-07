@@ -99,4 +99,13 @@ Fila defilarN(Fila F, int n){
     }
 }
 
-bool pertenece(Fila F, Item dato){}
+bool pertenece(Fila F, Item dato){
+    if(esFilaVacia(F)) return false;
+    Nodo *aux = F.frente;
+    while (aux != NULL && aux->dato != dato)
+    {
+        aux = aux->siguiente;
+    }
+    return aux != NULL;
+}
+
