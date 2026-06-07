@@ -42,6 +42,7 @@ Fila enfila(Fila F, Item dato){
     } else
     {
         F.final->siguiente = nuevo;
+        F.final = F.final->siguiente;
     }
     return F;
 }
@@ -96,7 +97,7 @@ Fila defilarN(Fila F, int n){
         return F;
     }else
     {
-        defilarN(defila(F),n-1);
+        return defilarN(defila(F),n-1);
     }
 }
 

@@ -13,6 +13,30 @@ int main(){
     }else{
         printf("No es fila vacia\n");
     }
+    getchar();
+    printf("2. Agregar el dato (1) a la fila\n");
+    F = enfila(F, 1);
+    printf("3. En el frente se encuentra el dato: %d\n", frente(F));
+    printf("Y en el final se encuentra el dato: %d", final(F));
+    getchar();
+    printf("4. Cargo los datos (2, 3, 4, 4, 5, 1, 7)\n");
+    F = enfila(F, 2);
+    F = enfila(F, 3);
+    F = enfila(F, 4);
+    F = enfila(F, 4);
+    F = enfila(F, 5);
+    F = enfila(F, 1);
+    F = enfila(F, 7);
+    printf("5. En el frente se encuentra el dato: %d\n", frente(F));
+    printf("Y en el final se encuentra el dato: %d", final(F));
+    printf("6. Longitud de la fila: %d", F.cantidad);
+    getchar();
+    printf("Liberar Memoria\n");
+    while (!esFilaVacia(F))
+    {
+        F = defila(F);
+    }
+    printf("");
     printf("- - - - - - - - FIN DEL PROGRAMA - - - - - -");
     return 0;
 }
