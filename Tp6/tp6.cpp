@@ -4,7 +4,7 @@
 #include "Fila.h"
 
 int main(){
-    printf("- - - - - - - - INICIO DEL PROGRAMA - - - - - -");
+    printf("- - - - - - - - INICIO DEL PROGRAMA - - - - - -\n");
     printf("1. Crear una fila vacia F\n");
     Fila F = FilaVacia();
     printf("2. Es F una fila vacia?\n");
@@ -29,7 +29,17 @@ int main(){
     F = enfila(F, 7);
     printf("5. En el frente se encuentra el dato: %d\n", frente(F));
     printf("Y en el final se encuentra el dato: %d", final(F));
-    printf("6. Longitud de la fila: %d", F.cantidad);
+    printf("6. Longitud de la fila: %d\n", F.longitud);
+    Fila G = FilaVacia();
+    F = extraer_N_esimo(F, 3, G);
+    if (pertenece(F, 4))
+    {
+        printf("Si pertenece\n");
+    }else{
+        printf("No pertenece\n");
+    }
+    F = singular(F);
+    printf("Longitud de F: %d\n", F.longitud);
     getchar();
     printf("Liberar Memoria\n");
     while (!esFilaVacia(F))

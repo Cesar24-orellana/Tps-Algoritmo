@@ -12,7 +12,7 @@ typedef struct Nodo
 
 typedef struct
 {
-    int cantidad;
+    int longitud;
     Nodo *final;
     Nodo *frente;
 }Fila;
@@ -21,7 +21,7 @@ typedef struct
 
 Fila FilaVacia(){
     Fila nueva;
-    nueva.cantidad = 0;
+    nueva.longitud = 0;
     nueva.final = NULL;
     nueva.frente = NULL;
     return nueva;
@@ -35,7 +35,7 @@ Fila enfila(Fila F, Item dato){
     Nodo *nuevo = new Nodo;
     nuevo->dato = dato;
     nuevo->siguiente = NULL;
-    F.cantidad++;
+    F.longitud++;
     if(esFilaVacia(F)){
         F.final = nuevo;
         F.frente = nuevo;
@@ -57,7 +57,7 @@ Fila defila(Fila F){
     Nodo *eliminar = F.frente;
     if(F.frente == F.final) return FilaVacia();
     F.frente = F.frente->siguiente;
-    F.cantidad--;
+    F.longitud--;
     delete(eliminar);
     return F;
 }
@@ -74,7 +74,7 @@ Fila Concatenar(Fila F, Fila G){
 }
 
 Fila extraer_N_esimo(Fila F, int n, Fila G){
-    if(esFilaVacia(F) || n > F.cantidad) return F;
+    if(esFilaVacia(F) || n > F.longitud) return F;
     if (n != 0)
     {
         G = enfila(G, frente(F));
