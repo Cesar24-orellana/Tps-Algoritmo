@@ -15,12 +15,16 @@ typedef struct Nodo * AB;
 
 //      Constructora y test
 
+void Liberar(AB ab){
+    delete(ab);
+}
+
 AB ABVacio(){
     return NULL;
 }
 
 bool esABVacio(AB ab){
-    return (ab->Der == NULL && ab->Izq == NULL);
+    return ab == NULL;
 }
 
 AB armarAB(AB izq, Item x, AB der){
@@ -32,6 +36,7 @@ AB armarAB(AB izq, Item x, AB der){
 }
 
 AB Izquierdo(AB ab){
+    if(esABVacio(ab)) return NULL;
     return ab->Izq;
 }
 
@@ -41,12 +46,13 @@ Item Raiz(AB ab){
 }
 
 AB Derecha(AB ab){
+    if(esABVacio(ab)) return NULL;
     return ab->Der;
 }
 
 bool pertenece(AB ab, Item x){
     if(esABVacio(ab)) return false;
-    if(x = Raiz(ab)) return true;
+    if(x == Raiz(ab)) return true;
     return pertenece(Izquierdo(ab), x) || pertenece(Derecha(ab), x);
 }
 
@@ -56,8 +62,33 @@ bool Iguales(AB ab1, AB ab2){
     return false;
 }
 
+bool EsABHoja(AB t){
+    if(esABVacio(t)) return false;
+    return esABVacio(Izquierdo(t)) && esABVacio(Derecha(t));
+}
+
 AB PodarHojas(AB ab){
     if(esABVacio(ab)) return ABVacio();
-    if(esABVacio(Izquierdo(ab)) && esABVacio(Derecha(ab))) return ABVacio();
+    if(EsABHoja(ab)) {
+        Liberar(ab); 
+        return ABVacio();
+    }
     return armarAB(PodarHojas(Izquierdo(ab)), Raiz(ab), PodarHojas(Derecha(ab)));
+}
+
+int Altura(AB t){
+    if(esABVacio(t) || EsABHoja(t)) return 0;
+    return 1 +  __max(Altura(Izquierdo(t)), Altura(Derecha(t)));
+}
+
+bool esBalanceado(AB ab){
+    if(esABVacio(ab)) return true;
+    if(abs(Altura(ab) - Altura(ab)) >= 1) return false;
+    return (esBalanceado(Izquierdo(ab)) && esBalanceado(Derecha(ab)));
+}
+
+bool estaLLeno(AB ab){
+    if(esABVacio(ab) || EsABHoja(ab)) return true;
+    if(!EsABHoja(ab)) return (estaLLeno(Izquierdo(ab)) && estaLLeno(Derecha(ab)));
+    return false;
 }
