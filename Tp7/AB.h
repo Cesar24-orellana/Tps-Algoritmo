@@ -15,8 +15,9 @@ typedef struct Nodo * AB;
 
 //      Constructora y test
 
-void Liberar(AB ab){
+AB Liberar(AB ab){
     delete(ab);
+    return NULL;
 }
 
 AB ABVacio(){
@@ -69,10 +70,7 @@ bool EsABHoja(AB t){
 
 AB PodarHojas(AB ab){
     if(esABVacio(ab)) return ABVacio();
-    if(EsABHoja(ab)) {
-        Liberar(ab); 
-        return ABVacio();
-    }
+    if(EsABHoja(ab)) return Liberar(ab);
     return armarAB(PodarHojas(Izquierdo(ab)), Raiz(ab), PodarHojas(Derecha(ab)));
 }
 
