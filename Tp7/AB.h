@@ -90,3 +90,11 @@ bool estaLLeno(AB ab){
     if(!EsABHoja(ab)) return (estaLLeno(Izquierdo(ab)) && estaLLeno(Derecha(ab)));
     return false;
 }
+
+AB liberarAB(AB T){
+    if(esABVacio(T)) return ABVacio();
+    if(EsABHoja(T)) return Liberar(T);
+    liberarAB(Izquierdo(T));
+    liberarAB(Derecha(T));
+    return Liberar(T);
+}

@@ -7,7 +7,7 @@ int main(){
     printf("- - - - - INICIO DEL PROGRAMA ADT(AB - - - - -\n");
     AB izq = ABVacio();
     AB der = ABVacio();
-    AB T = armarAB(izq, 'x', der);
+    AB T = armarAB(izq, 'a', der);
     if(esABVacio(T)){
         printf("Arbol vacio\n");
     } else{
@@ -26,6 +26,28 @@ int main(){
         printf("No pertenece\n");
     }
     printf("Altura de ab: %d\n", Altura(T));
+    I = armarAB(ABVacio(), 's', ABVacio());
+    D = armarAB(ABVacio(), 'f', ABVacio());
+    AB G = armarAB(I, 'g', D);
+    if(Iguales(T,G)){
+        printf("Son iguales\n");
+    }else{
+        printf("No son iguales\n");
+    }
+    T = armarAB(T, 'x', G);
+    printf("Raiz de ab: %c\n",Raiz(T));
+    printf("Altura de ab: %d\n", Altura(T));
+    if(esBalanceado(T)){
+        printf("Es balanceado\n");
+    }else {
+        printf("No es balanceado\n");
+    }
+    if(estaLLeno(T)){
+        printf("Esta Lleno\n");
+    }else {
+        printf("No esta Lleno\n");
+    }
+    T = liberarAB(T);
     printf("- - - - - FIN DEL PROGRAMA - - - - -");
     getchar();
     return 0;
