@@ -47,6 +47,9 @@ int main(){
     }else {
         printf("No esta Lleno\n");
     }
+    printf("Podar hojas del Arbol binario\n");
+    T = PodarHojas(T);
+    printf("Altura de ab: %d\n", Altura(T));
     T = liberarAB(T);
     printf("- - - - - FIN DEL PROGRAMA - - - - -");
     getchar();
